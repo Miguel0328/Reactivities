@@ -1,11 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./app/Layout/styles.css";
 import "semantic-ui-css/semantic.min.css";
 import App from "./app/Layout/App";
 import * as serviceWorker from "./serviceWorker";
+import ScrollToTop from "./app/Layout/ScrollToTop";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <ScrollToTop />
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
