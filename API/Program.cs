@@ -5,6 +5,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Persistence;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Domain;
 
 namespace API
 {
@@ -14,16 +16,21 @@ namespace API
         {
             var host = CreateHostBuilder(args).Build();
 
-            using (var scope = host.Services.CreateScope()){
+            using (var scope = host.Services.CreateScope())
+            {
                 var services = scope.ServiceProvider;
 
-                try{
+                try
+                {
                     var context = services.GetRequiredService<DataContext>();
+                    var userManager = services.GetRequiredService<UserManager<AppUser>>();
                     context.Database.Migrate();
-                    Seed.SeedData(context);
-                }catch(Exception e){
+                    Seed.SeedData(context, userManager).Wait();
+                }
+                catch (Exception e)
+                {
                     var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(e, "An error occured suring migration");
+                    logger.LogError(e, "An error occured during migration");
                 }
             }
 
