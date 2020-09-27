@@ -30,8 +30,8 @@ namespace Application.User
         {
             public CommandValidator()
             {
-                RuleFor(x => x.DisplayName).NotEmpty();
-                RuleFor(x => x.Username).NotEmpty();
+                RuleFor(x => x.DisplayName).NotEmpty().MinimumLength(3).MaximumLength(50);
+                RuleFor(x => x.Username).NotEmpty().MinimumLength(3).MaximumLength(15);
                 RuleFor(x => x.Email).NotEmpty().EmailAddress();
                 RuleFor(x => x.Password).Password();
             }
