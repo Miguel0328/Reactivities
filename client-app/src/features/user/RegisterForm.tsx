@@ -51,7 +51,7 @@ const RegisterForm = () => {
             component={TextInput}
             type="password"
           />
-          {submitError && !dirtySinceLastSubmit && (
+          {submitError && !dirtySinceLastSubmit && !submitting && (
             <ErrorMessage
               error={submitError}
             />

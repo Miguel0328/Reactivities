@@ -47,7 +47,7 @@ const LoginForm = () => {
             component={TextInput}
             type="password"
           />
-          {submitError && !dirtySinceLastSubmit && (
+          {submitError && !dirtySinceLastSubmit && !submitting && (
             <ErrorMessage
               error={submitError}
               text="Invalid email or password"
