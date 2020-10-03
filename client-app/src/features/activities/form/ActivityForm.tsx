@@ -24,8 +24,8 @@ const validate = combineValidators({
   category: isRequired("Category"),
   description: composeValidators(
     isRequired("Description"),
-    hasLengthGreaterThan(4)({
-      message: "Description needs to be at least  characters",
+    hasLengthGreaterThan(6)({
+      message: "Description needs to be at least 6 characters",
     })
   )(),
   city: isRequired("City"),
