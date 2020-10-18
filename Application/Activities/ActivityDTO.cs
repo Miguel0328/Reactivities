@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Application.Comments;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
 namespace Application.Activities
 {
-   public  class ActivityDTO
+    public class ActivityDTO
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
@@ -16,5 +17,6 @@ namespace Application.Activities
         public string Venue { get; set; }
         [JsonPropertyName("attendees")]
         public ICollection<AttendeeDTO> UserActivities { get; set; }
+        public ICollection<CommentDTO> Comments { get; set; }
     }
 }

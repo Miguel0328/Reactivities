@@ -91,6 +91,14 @@ const Profiles = {
     requests.postForm("/photos", photo),
   setMainPhoto: (id: string) => requests.post(`/photos/${id}/setmain`, {}),
   deletePhoto: (id: string) => requests.delete(`/photos/${id}`),
+  updateProfile: (profile: Partial<IProfile>) =>
+    requests.put("profiles", profile),
+  follow: (username: string) =>
+    requests.post(`profiles/${username}/follow`, {}),
+  unfollow: (username: string) =>
+    requests.delete(`profiles/${username}/follow`),
+  listFollowings: (username: string, predicate: string): Promise<IProfile[]> =>
+    requests.get(`/profiles/${username}/follow?predicate=${predicate}`),
 };
 
 export default {
